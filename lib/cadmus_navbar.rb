@@ -1,3 +1,5 @@
+require 'acts_as_list'
+
 require "cadmus_navbar/version"
 
 require "cadmus"
