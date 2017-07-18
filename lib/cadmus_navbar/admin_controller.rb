@@ -10,7 +10,12 @@ module CadmusNavbar
     def index
       respond_to do |format|
         format.html { render template: 'cadmus/navigation_items/index' }
-        format.json { render json: navigation_item_scope }
+        format.json do
+          render json: {
+            navigation_items: navigation_item_scope,
+            csrf_token: (protect_against_forgery? ? form_authenticity_token: nil)
+          }
+        end
       end
     end
 
