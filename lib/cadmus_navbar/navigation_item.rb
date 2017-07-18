@@ -5,6 +5,8 @@ module CadmusNavbar
 
     module ClassMethods
       def cadmus_navigation_item
+        model_with_parent
+
         belongs_to :navigation_section, class_name: self.name, inverse_of: :navigation_links, optional: true
         belongs_to :page, class_name: Cadmus.page_model.name, optional: true
         has_many :navigation_links, class_name: self.name, foreign_key: 'navigation_section_id', inverse_of: :navigation_section, dependent: :destroy
