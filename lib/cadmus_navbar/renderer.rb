@@ -25,7 +25,7 @@ module CadmusNavbar
     end
 
     def root_items
-      items_by_section_id[nil]
+      items_by_section_id[nil] || []
     end
 
     def render_navigation_items
@@ -36,7 +36,7 @@ module CadmusNavbar
     def render_navigation_item(item)
       case item.item_type
       when 'section'
-        render_navigation_section(item, items_by_section_id[item.id].sort_by(&:position))
+        render_navigation_section(item, (items_by_section_id[item.id] || []).sort_by(&:position))
       when 'link'
         render_navigation_link(item, root: true)
       end
